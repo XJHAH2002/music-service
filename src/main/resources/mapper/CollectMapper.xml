@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.mapper.CollectMapper">
+
+    <!-- 添加收藏 -->
+    <insert id="addCollect" parameterType="Collect">
+        insert into collect(user_id, music_id) values(#{userId}, #{musicId})
+    </insert>
+
+    <!-- 取消收藏 -->
+    <delete id="deleteCollect">
+        delete from collect where user_id = #{param1} and music_id = #{param2}
+    </delete>
+
+    <!-- 查询用户的收藏 -->
+    <select id="findByUserId" parameterType="Integer" resultType="Collect">
+        select * from collect where user_id = #{userId}
+    </select>
+</mapper>
